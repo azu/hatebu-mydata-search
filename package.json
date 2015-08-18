@@ -1,0 +1,35 @@
+{
+  "name": "hatebu-mydata-search",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/hatebu-mydata-search.git"
+  },
+  "author": "azu",
+  "email": "azuciao@gmail.com",
+  "homepage": "https://github.com/azu/hatebu-mydata-search",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azu/hatebu-mydata-search/issues"
+  },
+  "version": "1.0.0",
+  "description": "はてなブックマーク検索アプリ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hatena"
+  ],
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "espower-babel": "^3.2.0",
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0"
+  },
+  "dependencies": {
+    "hatebu-mydata-parser": "^1.0.0"
+  }
+}
