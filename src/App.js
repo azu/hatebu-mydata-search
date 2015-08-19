@@ -3,8 +3,12 @@
 import React from "react"
 import InputUserName from "./components/InputUserName"
 import BookmarkList from "./components/BookmarkList"
+import SearchBox from "./components/SearchBox"
 function onSubmit({name}) {
     console.log(name);
+}
+function onChange(text) {
+    console.log(text);
 }
 var bookmarks = [
     {
@@ -20,5 +24,6 @@ var bookmarks = [
 ];
 React.render(<div>
     <InputUserName onSubmit={onSubmit}/>
+    <SearchBox onChange={onChange}/>
     <BookmarkList bookmarks={bookmarks}/>
 </div>, document.body);
