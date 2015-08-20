@@ -32,17 +32,17 @@ export default class App extends React.Component {
     }
 
     static calculateState(prevState) {
-        console.log(SearchStore.getState().get("itemsForDisplay"));
         return {
-            search: SearchStore.getState()
-        }
+            search: SearchStore.getState(),
+            visibleItems: SearchStore.getVisibleItems()
+        };
     }
 
     render() {
         return <div>
             <InputUserName onSubmit={onSubmit}/>
             <SearchBox onChange={onChange}/>
-            <BookmarkList bookmarks={this.state.search.get("items")}/>
+            <BookmarkList bookmarks={this.state.visibleItems}/>
         </div>
     }
 }

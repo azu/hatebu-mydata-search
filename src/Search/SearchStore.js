@@ -3,32 +3,34 @@
 import {ReduceStore} from 'flux/utils';
 import SearchDispatcher from "./SearchDispatcher";
 import { keys } from "./SearchAction"
-import Immutable from "immutable"
-
-class SearchStore extends ReduceStore<Object> {
-    getInitialState():Object {
-        return Immutable.Map({
+import Immutable from "immutable-store"
+class SearchStore extends ReduceStore {
+    getInitialState() {
+        return Immutable({
             "text": "",
-            "itemsForDisplay": [],
             "items": []
         });
     }
 
-    reduce(state:Object, action:Object):Object {
+    reduce(state, action) {
         switch (action.type) {
             case keys.inputText:
-                return state.set("text", text);
+                return state.set("text", action.text);
             case keys.loadItems:
                 return state.set("items", action.items);
             default:
                 return state;
         }
     }
-}
-function updateDisplay(state) {
-    state.set("itemsForDisplay", state.get("items").filter(item => {
-        return item.title.indexOf(state.get("text")) !== -1;
-    }));
+
+    getVisibleItems() {
+        var state = this.getState();
+        return state.items.filter(item => {
+            return item.title.indexOf(state.text) !== -1 ||
+                item.url.indexOf(state.text) !== -1 ||
+                item.comment.indexOf(state.text) !== -1;
+        });
+    }
 }
 const instance = new SearchStore(SearchDispatcher);
 export default instance;
