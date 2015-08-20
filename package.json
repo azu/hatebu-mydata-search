@@ -38,6 +38,8 @@
   "dependencies": {
     "flux": "^2.1.1",
     "hatebu-mydata-parser": "^1.0.0",
+    "immu": "^1.2.2",
+    "immutable": "^3.7.4",
     "react": "^0.13.3"
   }
 }

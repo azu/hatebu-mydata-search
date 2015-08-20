@@ -4,10 +4,14 @@ import React from "react"
 import InputUserName from "./components/InputUserName"
 import BookmarkList from "./components/BookmarkList"
 import SearchBox from "./components/SearchBox"
+import SearchStore from "./Search/SearchStore"
+import SearchAction from "./Search/SearchAction"
+import {Container} from 'flux/utils';
 function onSubmit({name}) {
     console.log(name);
 }
 function onChange(text) {
+    SearchAction.inputText(text);
     console.log(text);
 }
 var bookmarks = [
@@ -22,8 +26,27 @@ var bookmarks = [
         comment: "[test] ビルドが楽になりたい"
     }
 ];
-React.render(<div>
-    <InputUserName onSubmit={onSubmit}/>
-    <SearchBox onChange={onChange}/>
-    <BookmarkList bookmarks={bookmarks}/>
-</div>, document.body);
+export default class App extends React.Component {
+    static getStores() {
+        return [SearchStore];
+    }
+
+    static calculateState(prevState) {
+        console.log(SearchStore.getState().get("itemsForDisplay"));
+        return {
+            search: SearchStore.getState()
+        }
+    }
+
+    render() {
+        return <div>
+            <InputUserName onSubmit={onSubmit}/>
+            <SearchBox onChange={onChange}/>
+            <BookmarkList bookmarks={this.state.search.get("items")}/>
+        </div>
+    }
+}
+
+SearchAction.loadItems();
+const AppContainer = Container.create(App);
+React.render(<AppContainer />, document.body);
