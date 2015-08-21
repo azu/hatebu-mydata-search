@@ -15,7 +15,7 @@ export default class SearchAction {
         });
     }
 
-    static loadItems() {
+    static loadItems(userName, fromDate) {
         getMyData("efcl").then(items => {
             SearchDispatcher.dispatch({
                 type: keys.loadItems,
