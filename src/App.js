@@ -41,12 +41,12 @@ export default class App extends React.Component {
     render() {
         return <div>
             <InputUserName onSubmit={onSubmit}/>
-            <SearchBox onChange={onChange}/>
+            <SearchBox value={this.state.search.text} onChange={onChange}/>
             <BookmarkList bookmarks={this.state.visibleItems}/>
         </div>
     }
 }
 
-SearchAction.loadItems();
+//SearchAction.loadItems("efcl", SearchStore.getLastUpdated());
 const AppContainer = Container.create(App);
 React.render(<AppContainer />, document.body);

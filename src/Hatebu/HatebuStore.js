@@ -2,35 +2,24 @@
 "use strict";
 import {ReduceStore} from 'flux/utils';
 import HatebuDispatcher from "./HatebuDispatcher";
-import { keys } from "./SearchAction"
+import { keys } from "./HatebuAction"
 import Immutable from "immutable-store"
-class SearchStore extends ReduceStore {
+import {create} from "../LocalStorageContainer"
+class HatebuStore extends ReduceStore {
     getInitialState() {
         return Immutable({
-            "text": "",
-            "items": []
+            "user": ""
         });
     }
 
     reduce(state, action) {
         switch (action.type) {
-            case keys.inputText:
-                return state.set("text", action.text);
-            case keys.loadItems:
-                return state.set("items", action.items);
+            case keys.inputUser:
+                return state.set("user", action.userName);
             default:
                 return state;
         }
     }
-
-    getVisibleItems() {
-        var state = this.getState();
-        return state.items.filter(item => {
-            return item.title.indexOf(state.text) !== -1 ||
-                item.url.indexOf(state.text) !== -1 ||
-                item.comment.indexOf(state.text) !== -1;
-        });
-    }
 }
-const instance = new SearchStore(SearchDispatcher);
+const instance = create(HatebuStore, HatebuDispatcher);
 export default instance;

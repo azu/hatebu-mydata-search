@@ -16,11 +16,13 @@ export default class SearchAction {
     }
 
     static loadItems(userName, fromDate) {
-        getMyData("efcl").then(items => {
+        getMyData(userName, fromDate).then(items => {
             SearchDispatcher.dispatch({
                 type: keys.loadItems,
                 items
-            })
-        })
+            });
+        }).catch(error => {
+            console.error(error);
+        });
     }
 }

@@ -9,7 +9,7 @@ export default class SearchBox extends React.Component {
 
     render() {
         return <div className="SearchBox">
-            <input onChange={this.onChange.bind(this)} type="text" placeholder="例) [test]"/>
+            <input onChange={this.onChange.bind(this)} type="text" placeholder="例) [test]" value={this.props.value} />
         </div>
     }
 }

@@ -39,6 +39,7 @@
     "flux": "^2.1.1",
     "hatebu-mydata-parser": "^1.0.0",
     "immutable-store": "^0.5.2",
+    "localforage": "^1.2.7",
     "react": "^0.13.3"
   }
 }
