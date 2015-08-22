@@ -1,7 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import {getMyData} from "./SearchUtils"
-import SearchDispatcher from "./SearchDispatcher";
+import Dispatcher from "../Dispatcher";
 export var keys = {
     inputText: Symbol("inputText"),
     loadItems: Symbol("loadItems")
@@ -9,7 +9,7 @@ export var keys = {
 };
 export default class SearchAction {
     static inputText(text) {
-        SearchDispatcher.dispatch({
+        Dispatcher.dispatch({
             type: keys.inputText,
             text
         });
@@ -17,7 +17,7 @@ export default class SearchAction {
 
     static loadItems(userName, fromDate) {
         getMyData(userName, fromDate).then(items => {
-            SearchDispatcher.dispatch({
+            Dispatcher.dispatch({
                 type: keys.loadItems,
                 items
             });

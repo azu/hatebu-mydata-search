@@ -1,11 +1,29 @@
 // LICENSE : MIT
 "use strict";
 import {ReduceStore} from 'flux/utils';
-import HatebuDispatcher from "./HatebuDispatcher";
+import Dispatcher from "../Dispatcher";
 import { keys } from "./HatebuAction"
 import Immutable from "immutable-store"
-import {create, keys as LocalKeys} from "../LocalStorageContainer"
+import {getStorage, setStorage} from "../LocalStorageContainer"
+const restoreType = Symbol("restore");
 class HatebuStore extends ReduceStore {
+    constructor(...args) {
+        super(...args);
+        getStorage(this.constructor.name).then(state => {
+            Dispatcher.dispatch({
+                type: restoreType,
+                state
+            });
+        });
+        this.addListener(() => {
+            var storeName = this.constructor.name;
+            var state = this.getState();
+            setStorage(storeName, state).catch(error => {
+                console.warn(error, " on " + storeName);
+            });
+        });
+    }
+
     getInitialState() {
         return Immutable({
             "userName": ""
@@ -16,12 +34,12 @@ class HatebuStore extends ReduceStore {
         switch (action.type) {
             case keys.inputUser:
                 return state.set("userName", action.userName);
-            case LocalKeys.restore:
+            case restoreType:
                 return state.import(action.state);
             default:
                 return state;
         }
     }
 }
-const instance = create(HatebuStore, HatebuDispatcher);
+const instance = new HatebuStore(Dispatcher);
 export default instance;

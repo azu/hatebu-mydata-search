@@ -1,11 +1,29 @@
 // LICENSE : MIT
 "use strict";
 import {ReduceStore} from 'flux/utils';
-import SearchDispatcher from "./SearchDispatcher";
+import Dispatcher from "../Dispatcher";
 import { keys } from "./SearchAction"
 import Immutable from "immutable-store"
-import {create, keys as LocalKeys} from "../LocalStorageContainer"
+import {getStorage, setStorage} from "../LocalStorageContainer"
+const restoreType = Symbol("restore");
 class SearchStore extends ReduceStore {
+    constructor(...args) {
+        super(...args);
+        getStorage(this.constructor.name).then(state => {
+            Dispatcher.dispatch({
+                type: restoreType,
+                state
+            });
+        });
+        this.addListener(() => {
+            var storeName = this.constructor.name;
+            var state = this.getState();
+            setStorage(storeName, state).catch(error => {
+                console.warn(error, " on " + storeName);
+            });
+        });
+    }
+
     getInitialState() {
         return Immutable({
             "text": "",
@@ -19,11 +37,9 @@ class SearchStore extends ReduceStore {
             case keys.inputText:
                 return state.set("text", action.text);
             case keys.loadItems:
-                return state.merge({
-                    lastUpdated: (new Date()).getTime(),
-                    items: action.items
-                });
-            case LocalKeys.restore:
+                var newState = state.items.concat(action.items);
+                return newState.set("lastUpdated", (new Date()).getTime());
+            case restoreType:
                 return state.import(action.state);
             default:
                 return state;
@@ -43,12 +59,16 @@ class SearchStore extends ReduceStore {
 
     getVisibleItems() {
         var state = this.getState();
+        console.log("getVi", state);
+        if (state.items == null) {
+            return [];
+        }
         return state.items.filter(item => {
             return item.title.indexOf(state.text) !== -1 ||
-                item.url.indexOf(state.text) !== -1 ||
+                //item.url.indexOf(state.text) !== -1 ||
                 item.comment.indexOf(state.text) !== -1;
         }).slice(0, 1000); // [display range]
     }
 }
-const instance = create(SearchStore, SearchDispatcher);
+const instance = new SearchStore(Dispatcher);
 export default instance;

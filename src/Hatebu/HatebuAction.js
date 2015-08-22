@@ -1,12 +1,12 @@
 // LICENSE : MIT
 "use strict";
-import HatebuDispatcher from "./HatebuDispatcher";
+import Dispatcher from "../Dispatcher";
 export var keys = {
     inputUser: Symbol("inputUser")
 };
 export default class HatebuAction {
     static inputUser(userName) {
-        HatebuDispatcher.dispatch({
+        Dispatcher.dispatch({
             type: keys.inputUser,
             userName
         });

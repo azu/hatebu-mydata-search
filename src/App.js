@@ -20,21 +20,9 @@ function onClickReload() {
     var {userName} = HatebuStore.getState();
     SearchAction.loadItems(userName, SearchStore.getLastUpdated());
 }
-var bookmarks = [
-    {
-        title: "タイトル",
-        url: "http://localhost:3000/",
-        comment: "[test] メッセージ"
-    },
-    {
-        title: "NW.jsでのバイナリリリース",
-        url: "http://efcl.info/2014/09/05/node-webkit-binary-release/",
-        comment: "[test] ビルドが楽になりたい"
-    }
-];
 export default class App extends React.Component {
     static getStores() {
-        return [SearchStore];
+        return [SearchStore, HatebuStore];
     }
 
     static calculateState(prevState) {
@@ -46,9 +34,11 @@ export default class App extends React.Component {
     }
 
     render() {
-        return <div>
-            <InputUserName onSubmit={onInputUserName}/>
-            <ReloadButton userName={this.state.hatebu.userName} onClick={onClickReload}/>
+        return <div className="App">
+            <div className="App-Header">
+                <InputUserName userName={this.state.hatebu.userName} onSubmit={onInputUserName}/>
+                <ReloadButton onClick={onClickReload}/>
+            </div>
             <SearchBox value={this.state.search.text} onChange={onChange}/>
             <BookmarkList bookmarks={this.state.visibleItems}/>
         </div>

@@ -1,0 +1,9 @@
+@import "./components/Searchbox.css";
+@import "./components/InputUserName.css";
+@import "./components/ReloadButton.css";
+/*layout*/
+@import "./layout/App-Layout.css";
+
+* {
+    box-sizing: border-box;
+}

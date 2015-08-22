@@ -1,0 +1,11 @@
+.InputUserName-currentUser, .InputUserName-form {
+    display: inline-block;
+}
+
+.InputUserName-currentUser {
+    margin-right: 0.5rem
+}
+
+.InputUserName-form {
+    margin-left: 0.5rem;
+}

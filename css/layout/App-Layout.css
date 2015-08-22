@@ -1,0 +1,11 @@
+.App-Header .InputUserName {
+}
+
+.App-Header .ReloadButton {
+    margin-left: auto;
+}
+
+.App-Header {
+    display: flex;
+    align-items: center;
+}
