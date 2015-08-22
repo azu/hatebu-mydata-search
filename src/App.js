@@ -4,19 +4,21 @@ import React from "react"
 import InputUserName from "./components/InputUserName"
 import BookmarkList from "./components/BookmarkList"
 import ReloadButton from "./components/ReloadButton"
+import HatebuAction from "./Hatebu/HatebuAction"
+import HatebuStore from "./Hatebu/HatebuStore"
 import SearchBox from "./components/SearchBox"
 import SearchStore from "./Search/SearchStore"
 import SearchAction from "./Search/SearchAction"
 import {Container} from 'flux/utils';
-function onSubmit({name}) {
-    console.log(name);
+function onInputUserName({name}) {
+    HatebuAction.inputUser(name);
 }
 function onChange(text) {
     SearchAction.inputText(text);
-    console.log(text);
 }
 function onClickReload() {
-    SearchAction.loadItems("efcl", SearchStore.getLastUpdated());
+    var {userName} = HatebuStore.getState();
+    SearchAction.loadItems(userName, SearchStore.getLastUpdated());
 }
 var bookmarks = [
     {
@@ -38,14 +40,15 @@ export default class App extends React.Component {
     static calculateState(prevState) {
         return {
             search: SearchStore.getState(),
+            hatebu: HatebuStore.getState(),
             visibleItems: SearchStore.getVisibleItems()
         };
     }
 
     render() {
         return <div>
-            <InputUserName onSubmit={onSubmit}/>
-            <ReloadButton onClick={onClickReload}/>
+            <InputUserName onSubmit={onInputUserName}/>
+            <ReloadButton userName={this.state.hatebu.userName} onClick={onClickReload}/>
             <SearchBox value={this.state.search.text} onChange={onChange}/>
             <BookmarkList bookmarks={this.state.visibleItems}/>
         </div>

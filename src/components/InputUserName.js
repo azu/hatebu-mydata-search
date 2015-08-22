@@ -11,6 +11,7 @@ export default class InputUserName extends React.Component {
     }
 
     render() {
+
         return <div className="InputUserName">
             <form onSubmit={this.onSubmit.bind(this)}>
                 <input type="text" ref="userName"></input>

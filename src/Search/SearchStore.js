@@ -15,7 +15,6 @@ class SearchStore extends ReduceStore {
     }
 
     reduce(state, action) {
-        console.log(action.type);
         switch (action.type) {
             case keys.inputText:
                 return state.set("text", action.text);
