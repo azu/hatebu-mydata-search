@@ -20,7 +20,7 @@ class SearchStore extends ReduceStore {
                 return state.set("text", action.text);
             case keys.loadItems:
                 return state.merge({
-                    "lastUpdated": (new Date()).getTime(),
+                    lastUpdated: (new Date()).getTime(),
                     items: action.items
                 });
             case LocalKeys.restore:
