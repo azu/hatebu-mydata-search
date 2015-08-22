@@ -4,7 +4,7 @@ import {ReduceStore} from 'flux/utils';
 import SearchDispatcher from "./SearchDispatcher";
 import { keys } from "./SearchAction"
 import Immutable from "immutable-store"
-import {create} from "../LocalStorageContainer"
+import {create, keys as LocalKeys} from "../LocalStorageContainer"
 class SearchStore extends ReduceStore {
     getInitialState() {
         return Immutable({
@@ -15,6 +15,7 @@ class SearchStore extends ReduceStore {
     }
 
     reduce(state, action) {
+        console.log(action.type);
         switch (action.type) {
             case keys.inputText:
                 return state.set("text", action.text);
@@ -23,6 +24,8 @@ class SearchStore extends ReduceStore {
                     "lastUpdated": (new Date()).getTime(),
                     items: action.items
                 });
+            case LocalKeys.restore:
+                return state.import(action.state);
             default:
                 return state;
         }
@@ -41,11 +44,11 @@ class SearchStore extends ReduceStore {
 
     getVisibleItems() {
         var state = this.getState();
-        return state.items.slice(0, 100).filter(item => {
+        return state.items.filter(item => {
             return item.title.indexOf(state.text) !== -1 ||
                 item.url.indexOf(state.text) !== -1 ||
                 item.comment.indexOf(state.text) !== -1;
-        });
+        }).slice(0, 1000); // [display range]
     }
 }
 const instance = create(SearchStore, SearchDispatcher);

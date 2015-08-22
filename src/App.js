@@ -3,6 +3,7 @@
 import React from "react"
 import InputUserName from "./components/InputUserName"
 import BookmarkList from "./components/BookmarkList"
+import ReloadButton from "./components/ReloadButton"
 import SearchBox from "./components/SearchBox"
 import SearchStore from "./Search/SearchStore"
 import SearchAction from "./Search/SearchAction"
@@ -13,6 +14,9 @@ function onSubmit({name}) {
 function onChange(text) {
     SearchAction.inputText(text);
     console.log(text);
+}
+function onClickReload() {
+    SearchAction.loadItems("efcl", SearchStore.getLastUpdated());
 }
 var bookmarks = [
     {
@@ -41,12 +45,12 @@ export default class App extends React.Component {
     render() {
         return <div>
             <InputUserName onSubmit={onSubmit}/>
+            <ReloadButton onClick={onClickReload}/>
             <SearchBox value={this.state.search.text} onChange={onChange}/>
             <BookmarkList bookmarks={this.state.visibleItems}/>
         </div>
     }
 }
 
-//SearchAction.loadItems("efcl", SearchStore.getLastUpdated());
 const AppContainer = Container.create(App);
 React.render(<AppContainer />, document.body);

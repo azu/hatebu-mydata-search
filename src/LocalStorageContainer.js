@@ -3,6 +3,9 @@
 import Immutable from "immutable-store"
 import localforage from "localforage"
 localforage.setDriver([localforage.INDEXEDDB, localforage.WEBSQL]);
+export var keys = {
+    restore: Symbol("restore")
+};
 export function setStorage(storeName, state) {
     return new Promise((resolve, reject) => {
         var serialized = JSON.stringify(state);
@@ -26,7 +29,6 @@ export function getStorage(storeName) {
  */
 export function mixin(store) {
     store.addListener(function () {
-        console.log("CHCHCHHCHHCH");
         var storeName = store.constructor.name;
         var state = store.getState();
         setStorage(storeName, state).catch(error => {
@@ -35,11 +37,6 @@ export function mixin(store) {
     });
     return store;
 }
-function forceStateUpdate(store, state) {
-    store._state = state;
-    store.__changed = true;
-    store.__emitter.emit(store.__changeEvent);
-}
 /**
  * @param {FluxReduceStore} Store
  * @param {Dispatcher} Dispatcher
@@ -47,8 +44,10 @@ function forceStateUpdate(store, state) {
 export function create(Store, Dispatcher) {
     var store = mixin(new Store(Dispatcher));
     getStorage(Store.name).then(storedState => {
-        forceStateUpdate(store, store.getState().import(storedState));
+        Dispatcher.dispatch({
+            type: keys.restore,
+            state: storedState
+        });
     }).catch(console.log.bind(console));
-
     return store;
 }
