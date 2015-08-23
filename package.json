@@ -27,7 +27,8 @@
     "deploy": "gh-pages-deploy-cmd"
   },
   "keywords": [
-    "hatena"
+    "hatena",
+    "search"
   ],
   "devDependencies": {
     "babel": "^5.8.21",
