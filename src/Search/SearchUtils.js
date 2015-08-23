@@ -7,7 +7,12 @@ export function getMyData(userName, date) {
         var dateQuery = date ? "?timestamp=" + stringFromDate(date) : "";
         xhr.open("get", "https://jsonp.afeld.me/?url=http://b.hatena.ne.jp/" + userName + "/search.data" + dateQuery);
         xhr.onload = function () {
-            resolve(parse(xhr.responseText));
+            console.log(xhr.status);
+            if (200 <= xhr.status && xhr.status < 300) {
+                resolve(parse(xhr.responseText));
+            } else {
+                reject(new Error(xhr.statusText));
+            }
         };
         xhr.onerror = function () {
             reject(new Error(xhr.statusText));

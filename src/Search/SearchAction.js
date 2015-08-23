@@ -23,13 +23,11 @@ export default class SearchAction {
     }
 
     static loadItems(userName, fromDate) {
-        getMyData(userName, fromDate).then(items => {
+        return getMyData(userName, fromDate).then(items => {
             Dispatcher.dispatch({
                 type: keys.loadItems,
                 items
             });
-        }).catch(error => {
-            console.error(error);
         });
     }
 }

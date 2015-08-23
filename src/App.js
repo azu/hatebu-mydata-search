@@ -13,14 +13,20 @@ import {Container} from 'flux/utils';
 function onInputUserName({name}) {
     SearchAction.reset();
     HatebuAction.inputUser(name);
-    SearchAction.loadItems(name);
+    SearchAction.loadItems(name).catch(error => {
+        console.error(error);
+        alert(error.message);
+    });
 }
 function onChange(text) {
     SearchAction.inputText(text);
 }
 function onClickReload() {
     var {userName} = HatebuStore.getState();
-    SearchAction.loadItems(userName, SearchStore.getLastUpdated());
+    SearchAction.loadItems(userName, SearchStore.getLastUpdated()).catch(error => {
+        console.error(error);
+        alert(error.message);
+    });
 }
 export default class App extends React.Component {
     static getStores() {
