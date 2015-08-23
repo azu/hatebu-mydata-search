@@ -23,7 +23,8 @@
     "watch": "watchify -d src/App.js -t babelify -o build/build.js",
     "watch:css": "cssnext --sourcemap -w css/index.css build/build.css",
     "prepublish": "npm run --if-present build && npm run --if-present build:css",
-    "test": "mocha"
+    "test": "mocha",
+    "deploy": "gh-pages-deploy-cmd"
   },
   "keywords": [
     "hatena"
@@ -34,6 +35,7 @@
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "espower-babel": "^3.2.0",
+    "gh-pages-deploy-cmd": "^1.0.1",
     "mocha": "^2.2.5",
     "postcss-bem-linter": "^0.6.0",
     "power-assert": "^0.11.0",
