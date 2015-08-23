@@ -24,7 +24,7 @@
     "watch:css": "cssnext --sourcemap -w css/index.css build/build.css",
     "prepublish": "npm run --if-present build && npm run --if-present build:css",
     "test": "mocha",
-    "deploy": "gh-pages-deploy-cmd"
+    "deploy": "gh-pages-deploy-sh"
   },
   "keywords": [
     "hatena",
@@ -36,7 +36,7 @@
     "browserify": "^11.0.1",
     "cssnext": "^1.8.3",
     "espower-babel": "^3.2.0",
-    "gh-pages-deploy-cmd": "^1.0.1",
+    "gh-pages-deploy-sh": "^1.1.0",
     "mocha": "^2.2.5",
     "postcss-bem-linter": "^0.6.0",
     "power-assert": "^0.11.0",
