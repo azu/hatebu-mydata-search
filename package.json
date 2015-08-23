@@ -24,7 +24,7 @@
     "watch:css": "cssnext --sourcemap -w css/index.css build/build.css",
     "prepublish": "npm run --if-present build && npm run --if-present build:css",
     "test": "mocha",
-    "deploy": "gh-pages-deploy-sh"
+    "deploy": "npm run build && gh-pages-deploy-sh"
   },
   "keywords": [
     "hatena",
