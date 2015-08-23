@@ -10,10 +10,6 @@
 
 - [ ] Write usage instructions
 
-## Tests
-
-- [ ] Write How to Tests
-
 ## Contributing
 
 1. Fork it!
