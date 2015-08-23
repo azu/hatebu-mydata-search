@@ -11,7 +11,9 @@ import SearchStore from "./Search/SearchStore"
 import SearchAction from "./Search/SearchAction"
 import {Container} from 'flux/utils';
 function onInputUserName({name}) {
+    SearchAction.reset();
     HatebuAction.inputUser(name);
+    SearchAction.loadItems(name);
 }
 function onChange(text) {
     SearchAction.inputText(text);

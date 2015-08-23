@@ -34,6 +34,12 @@ class SearchStore extends ReduceStore {
 
     reduce(state, action) {
         switch (action.type) {
+            case keys.reset:
+                return Immutable({
+                    "text": "",
+                    "lastUpdated": null,
+                    "items": []
+                });
             case keys.inputText:
                 return state.set("text", action.text);
             case keys.loadItems:
@@ -59,13 +65,12 @@ class SearchStore extends ReduceStore {
 
     getVisibleItems() {
         var state = this.getState();
-        console.log("getVi", state);
         if (state.items == null) {
             return [];
         }
         return state.items.filter(item => {
             return item.title.indexOf(state.text) !== -1 ||
-                //item.url.indexOf(state.text) !== -1 ||
+                    //item.url.indexOf(state.text) !== -1 ||
                 item.comment.indexOf(state.text) !== -1;
         }).slice(0, 1000); // [display range]
     }

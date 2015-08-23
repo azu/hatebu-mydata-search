@@ -5,7 +5,6 @@ export function getMyData(userName, date) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
         var dateQuery = date ? "?timestamp=" + stringFromDate(date) : "";
-        console.log(dateQuery);
         xhr.open("get", "https://jsonp.afeld.me/?url=http://b.hatena.ne.jp/" + userName + "/search.data" + dateQuery);
         xhr.onload = function () {
             resolve(parse(xhr.responseText));
