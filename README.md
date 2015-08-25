@@ -1,16 +1,26 @@
 # hatebu-mydata-search [![Build Status](https://travis-ci.org/azu/hatebu-mydata-search.svg?branch=master)](https://travis-ci.org/azu/hatebu-mydata-search)
 
-はてなブックマーク検索
+ブラウザで動くはてなブックマーク検索
 
 ## Installation
 
-  npm install
+```
+npm install
+npm run build
+```
 
 ## Usage
+
+http://azu.github.io/hatebu-mydata-search/
 
 1. input hatena bookmark account name.
 2. wait loading...
 3. filter by word.
+
+## Feature
+
+- Cache bookmark data.
+- Filter by word.
 
 ## Contributing
 
