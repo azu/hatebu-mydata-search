@@ -4,11 +4,13 @@
 
 ## Installation
 
-- [ ] Describe the installation process
+  npm install
 
 ## Usage
 
-- [ ] Write usage instructions
+1. input hatena bookmark account name.
+2. wait loading...
+3. filter by word.
 
 ## Contributing
 
