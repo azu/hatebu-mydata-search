@@ -5,7 +5,7 @@ export function getMyData(userName, date) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
         var dateQuery = date ? "?timestamp=" + stringFromDate(date) : "";
-        xhr.open("get", "https://jsonp.afeld.me/?url=http://b.hatena.ne.jp/" + userName + "/search.data" + dateQuery);
+        xhr.open("get", "http://cors.io/?u=http://b.hatena.ne.jp/" + userName + "/search.data" + dateQuery);
         xhr.onload = function () {
             console.log(xhr.status);
             if (200 <= xhr.status && xhr.status < 300) {
