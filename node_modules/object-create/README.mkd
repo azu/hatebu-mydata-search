@@ -1,0 +1,21 @@
+# object-create
+
+#### Object.create replacement compatible with old browsers. Extracted from https://github.com/kriskowal/es5-shim
+
+[![Build Status](https://travis-ci.org/tarruda/object-create.png)](https://travis-ci.org/tarruda/object-create)
+<br>
+[![browser support](https://ci.testling.com/tarruda/object-create.png)](https://ci.testling.com/tarruda/object-create)
+
+
+## Installation
+
+```sh
+npm install --save object-create
+```
+
+## Usage
+
+```js
+var create = require('object-create');
+var child = create(proto, props);
+```

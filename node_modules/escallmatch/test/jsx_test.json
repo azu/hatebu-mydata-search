@@ -1,0 +1,158 @@
+{
+  "body": [
+    {
+      "declarations": [
+        {
+          "id": {
+            "name": "assert",
+            "type": "Identifier"
+          },
+          "init": {
+            "callee": {
+              "name": "require",
+              "type": "Identifier"
+            },
+            "arguments": [
+              {
+                "value": "power-assert",
+                "raw": "'power-assert'",
+                "type": "Literal"
+              }
+            ],
+            "type": "CallExpression"
+          },
+          "type": "VariableDeclarator"
+        }
+      ],
+      "kind": "var",
+      "type": "VariableDeclaration"
+    },
+    {
+      "expression": {
+        "callee": {
+          "name": "it",
+          "type": "Identifier"
+        },
+        "arguments": [
+          {
+            "value": "CheckboxWithLabel",
+            "raw": "'CheckboxWithLabel'",
+            "type": "Literal"
+          },
+          {
+            "id": null,
+            "generator": false,
+            "expression": false,
+            "params": [],
+            "body": {
+              "body": [
+                {
+                  "declarations": [
+                    {
+                      "id": {
+                        "name": "CheckboxWithLabel",
+                        "type": "Identifier"
+                      },
+                      "init": {
+                        "callee": {
+                          "name": "require",
+                          "type": "Identifier"
+                        },
+                        "arguments": [
+                          {
+                            "value": "../src/CheckboxWithLabel.js",
+                            "raw": "'../src/CheckboxWithLabel.js'",
+                            "type": "Literal"
+                          }
+                        ],
+                        "type": "CallExpression"
+                      },
+                      "type": "VariableDeclarator"
+                    }
+                  ],
+                  "kind": "var",
+                  "type": "VariableDeclaration"
+                },
+                {
+                  "expression": {
+                    "callee": {
+                      "object": {
+                        "object": {
+                          "openingElement": {
+                            "attributes": [
+                              {
+                                "name": {
+                                  "name": "labelOn",
+                                  "type": "JSXIdentifier"
+                                },
+                                "value": {
+                                  "value": "On",
+                                  "raw": "\"On\"",
+                                  "type": "Literal"
+                                },
+                                "type": "JSXAttribute"
+                              },
+                              {
+                                "name": {
+                                  "name": "labelOff",
+                                  "type": "JSXIdentifier"
+                                },
+                                "value": {
+                                  "value": "Off",
+                                  "raw": "\"Off\"",
+                                  "type": "Literal"
+                                },
+                                "type": "JSXAttribute"
+                              }
+                            ],
+                            "name": {
+                              "name": "CheckboxWithLabel",
+                              "type": "JSXIdentifier"
+                            },
+                            "selfClosing": true,
+                            "type": "JSXOpeningElement"
+                          },
+                          "closingElement": null,
+                          "children": [],
+                          "type": "JSXElement",
+                          "parenthesizedExpression": true
+                        },
+                        "property": {
+                          "name": "assert",
+                          "type": "Identifier"
+                        },
+                        "computed": false,
+                        "type": "MemberExpression"
+                      },
+                      "property": {
+                        "name": "equals",
+                        "type": "Identifier"
+                      },
+                      "computed": false,
+                      "type": "MemberExpression"
+                    },
+                    "arguments": [
+                      {
+                        "value": "Off",
+                        "raw": "'Off'",
+                        "type": "Literal"
+                      }
+                    ],
+                    "type": "CallExpression"
+                  },
+                  "type": "ExpressionStatement"
+                }
+              ],
+              "type": "BlockStatement"
+            },
+            "type": "FunctionExpression"
+          }
+        ],
+        "type": "CallExpression"
+      },
+      "type": "ExpressionStatement"
+    }
+  ],
+  "sourceType": "module",
+  "type": "Program"
+}

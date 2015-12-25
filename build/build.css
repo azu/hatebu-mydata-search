@@ -1,0 +1,53 @@
+.SearchBox {
+    display: block;
+    height: 48px;
+    height: 3rem
+}
+
+.SearchBox input {
+    width: 100%;
+    height: 100%;
+    font-size: 32px;
+    font-size: 2.0rem;
+    padding: 0 8px;
+    padding: 0 0.5rem;
+}
+.InputUserName-currentUser, .InputUserName-form {
+    display: inline-block;
+}
+
+.InputUserName-currentUser {
+    margin-right: 8px;
+    margin-right: 0.5rem
+}
+
+.InputUserName-form {
+    margin-left: 8px;
+    margin-left: 0.5rem;
+}
+.ReloadButton button {
+    color: white;
+    background: rgb(66, 184, 221);
+}
+/*layout*/
+.App-Header .InputUserName {
+}
+
+.App-Header .ReloadButton {
+    margin-left: auto;
+}
+
+.App-Header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+}
