@@ -4,7 +4,7 @@ import React from "react"
 export default class InputUserName extends React.Component {
     onSubmit(event) {
         event.preventDefault();
-        var name = React.findDOMNode(this.refs.userName).value;
+        var name = this.refs.userName.value;
         this.props.onSubmit({
             name
         });

@@ -26,7 +26,7 @@ class HatebuStore extends ReduceStore {
 
     getInitialState() {
         return Immutable({
-            "userName": ""
+            "userName": "tester"
         });
     }
 

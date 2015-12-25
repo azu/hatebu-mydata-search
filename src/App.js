@@ -1,6 +1,7 @@
 // LICENSE : MIT
 "use strict";
 import React from "react"
+import ReactDOM from "react-dom";
 import InputUserName from "./components/InputUserName"
 import BookmarkList from "./components/BookmarkList"
 import ReloadButton from "./components/ReloadButton"
@@ -54,4 +55,4 @@ export default class App extends React.Component {
 }
 
 const AppContainer = Container.create(App);
-React.render(<AppContainer />, document.body);
+ReactDOM.render(<AppContainer />, document.getElementById("js-main"));
