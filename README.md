@@ -2,6 +2,8 @@
 
 ブラウザで動くはてなブックマーク検索
 
+<ins>より最適化されたアプリを作りました: <https://github.com/azu/hatebupwa> </ins>
+
 ## Installation
 
 ```
